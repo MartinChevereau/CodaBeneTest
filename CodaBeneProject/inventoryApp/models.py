@@ -24,7 +24,7 @@ class ProductsModel(models.Model):
     flavor = models.CharField(max_length=256)
     photo = models.ImageField(upload_to='', unique=TRUE, null=TRUE)
     def __str__(self) -> str:
-        return f"{self.shelf} of brand : {self.brand} and flavor: {self.flavor}"
+        return f"{str(self.shelf)[:-1]} of brand : {self.brand} and flavor: {self.flavor}"
 
 class ExpiriesModel(models.Model):
     id = models.AutoField(primary_key=TRUE)
