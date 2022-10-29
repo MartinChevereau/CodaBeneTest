@@ -18,9 +18,10 @@ class ProductsModels(models.Model):
     shelf = models.OneToOneField(ShelvesModel, on_delete=models.PROTECT)
     brand = models.CharField(max_length=256)
     flavor = models.CharField(max_length=256)
+    photo = models.ImageField(upload_to='', unique=TRUE, null=TRUE)
 
 
 class ExpiriesModels(models.Model):
     id = models.AutoField(primary_key=TRUE)
     GTIN = models.OneToOneField(ProductsModels, on_delete=models.PROTECT)
-    expiry_date = models.DateField()
+    expiry_date = models.DateField(null=TRUE)
