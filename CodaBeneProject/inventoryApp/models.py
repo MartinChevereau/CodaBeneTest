@@ -14,10 +14,11 @@ class ShelvesModel(models.Model):
     def __str__(self) -> str:
         return self.name
 
-
+def random_GTIN():
+    return random.randint(0, 10**8 - 1)
 class ProductsModel(models.Model):
     GTIN = models.IntegerField(primary_key=TRUE,
-                               default=random.randint(0, 10**8 - 1))
+                               default=random_GTIN)
     shelf = models.ForeignKey(ShelvesModel, on_delete=models.PROTECT)
     brand = models.CharField(max_length=256)
     flavor = models.CharField(max_length=256)
