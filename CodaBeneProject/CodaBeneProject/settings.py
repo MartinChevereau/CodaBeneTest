@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "inventoryApp.urls"
+ROOT_URLCONF = "CodaBeneProject.urls"
 
 TEMPLATES = [
     {
