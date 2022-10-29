@@ -22,7 +22,7 @@ import inventoryApp.urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("/", include(inventoryApp.urls)),
+    path("", include(inventoryApp.urls)),
 ]
 
 if settings.DEBUG:
