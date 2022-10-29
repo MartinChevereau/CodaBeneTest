@@ -18,16 +18,16 @@ class ShelvesModel(models.Model):
 class ProductsModel(models.Model):
     GTIN = models.IntegerField(primary_key=TRUE,
                                default=random.randint(0, 10**8 - 1))
-    shelf = models.OneToOneField(ShelvesModel, on_delete=models.PROTECT)
+    shelf = models.ForeignKey(ShelvesModel, on_delete=models.PROTECT)
     brand = models.CharField(max_length=256)
     flavor = models.CharField(max_length=256)
-    photo = models.ImageField(upload_to='', unique=TRUE, null=TRUE, height_field=256, width_field=256)
+    photo = models.ImageField(upload_to='', unique=TRUE, null=TRUE)
     def __str__(self) -> str:
-        return f"{self.shelf} of brand :{self.brand} and flavor:{self.flavor}"
+        return f"{self.shelf} of brand : {self.brand} and flavor: {self.flavor}"
 
 class ExpiriesModel(models.Model):
     id = models.AutoField(primary_key=TRUE)
-    GTIN = models.OneToOneField(ProductsModel, on_delete=models.PROTECT)
+    GTIN = models.ForeignKey(ProductsModel, on_delete=models.PROTECT)
     expiry_date = models.DateField(null=TRUE)
     def __str__(self) -> str:
-        return f"{self.GTIN} expiring :{self.expiry_date}"
+        return f"{self.GTIN} expiring : {self.expiry_date}"
