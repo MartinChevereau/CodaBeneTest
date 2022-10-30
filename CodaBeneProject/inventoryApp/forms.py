@@ -8,7 +8,8 @@ from .models import *
 class ExpiriesForm(forms.Form):
 
     products = ProductsModel.objects.all()
-    expiry_date = forms.DateField(input_formats=['%d/%m/%Y', '%Y/%m/%d'])
+    # the date format is the one expected by postgresql
+    expiry_date = forms.DateField(input_formats=['%Y-%m-%d'])
     choices = []
     for product in products:
         choices.append((product.GTIN, product.format()))

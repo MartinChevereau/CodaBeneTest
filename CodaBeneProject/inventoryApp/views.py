@@ -15,6 +15,12 @@ def addProductView(request):
         form = ExpiriesForm(request.POST)
         if form.is_valid():
             valid = True
+            data = request.POST
+            # this allows us to update the expiry if the GTIN already exists
+            product = ProductsModel.objects.get(GTIN=data["GTIN"])
+            newExpiry, _ = ExpiriesModel.objects.get_or_create(GTIN=product)
+            newExpiry.expiry_date = data["expiry_date"]
+            newExpiry.save()
 
     context = {
         'form' : form,

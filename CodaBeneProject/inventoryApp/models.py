@@ -31,8 +31,7 @@ class ProductsModel(models.Model):
         return f"{self.GTIN:08d} / {self}"
 
 class ExpiriesModel(models.Model):
-    id = models.AutoField(primary_key=TRUE)
-    GTIN = models.OneToOneField(ProductsModel, on_delete=models.PROTECT, unique=TRUE)
+    GTIN = models.OneToOneField(ProductsModel, on_delete=models.PROTECT, unique=TRUE, primary_key=TRUE)
     expiry_date = models.DateField(null=TRUE)
     def __str__(self) -> str:
         return f"{self.GTIN} expiring : {self.expiry_date}"
