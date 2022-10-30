@@ -30,8 +30,23 @@ def addProductView(request):
     return render(request, "addProduct.html",context)
 
 def checkExpiriesView(request):
-    expiries = ExpiriesModel.objects.all().order_by('expiry_date')
+    form = FilterShelvesFrom()
+    # if we receive answer for the filter form we display accordingly
+    if request.method == 'POST':
+        data = request.POST
+        # code to indicate that we take all shelves
+        if data['shelf'] != '-1':
+            expiries = ExpiriesModel.objects.filter(GTIN__shelf__id=data['shelf'] ).order_by('expiry_date')
+        else:
+            expiries = ExpiriesModel.objects.all().order_by('expiry_date')
+    # if this is the first time we get the page we display all
+    else:
+        expiries = ExpiriesModel.objects.all().order_by('expiry_date')
+
+
+
     context = {
-        "content" : expiries
+        "content" : expiries,
+        "form": form
     }
     return render(request, "checkExpiries.html", context)

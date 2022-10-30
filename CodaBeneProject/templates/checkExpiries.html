@@ -11,6 +11,13 @@
     <center>
         <h1>Current products in store</h1>
         <a href="/addProduct">Add a new expiry date</a>
+        <form action='' method="post">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <input type="submit" value="Select shelf">
+        <form>
         {% for data in content%}
         <li>
             <p >{{data}}</p>
