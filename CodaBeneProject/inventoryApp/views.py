@@ -7,14 +7,18 @@ from .forms import *
 # Create your views here.
 def addProductView(request):
     form = ExpiriesForm()
+    submitted = False
+    valid = False
     if request.method == 'POST':
+        submitted = True
+        # checking if date input is valid
         form = ExpiriesForm(request.POST)
-        submitted = TRUE
-    else:
-        submitted = FALSE
+        if form.is_valid():
+            valid = True
 
     context = {
-        'message' : message,
-        'submitted' : submitted
+        'form' : form,
+        'submitted' : submitted,
+        'valid' : valid
     }
     return render(request, "addProduct.html",context)
