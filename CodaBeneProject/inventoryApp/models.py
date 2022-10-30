@@ -25,10 +25,14 @@ class ProductsModel(models.Model):
     photo = models.ImageField(upload_to='', unique=TRUE, null=TRUE)
     def __str__(self) -> str:
         return f"{str(self.shelf)[:-1]} of brand : {self.brand} and flavor: {self.flavor}"
+    
+    # prettier printing to display GITN
+    def format(self):
+        return f"{self.GTIN:08d} / {self}"
 
 class ExpiriesModel(models.Model):
     id = models.AutoField(primary_key=TRUE)
-    GTIN = models.ForeignKey(ProductsModel, on_delete=models.PROTECT)
+    GTIN = models.OneToOneField(ProductsModel, on_delete=models.PROTECT, unique=TRUE)
     expiry_date = models.DateField(null=TRUE)
     def __str__(self) -> str:
         return f"{self.GTIN} expiring : {self.expiry_date}"

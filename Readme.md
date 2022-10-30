@@ -24,4 +24,4 @@ The **PostgreSQL** DB runs online through railway
 ### Security 
 Since I had to make the git repo public, anyone can access the database because of its infos present in the code...\
 However these data are not crucial to protect\
-I found out abour tools like **Git secret** but this would have taken too much time to implement or I could have just give the DB info to the user but this is less practical
+I found out about tools like **Git secret** but this would have taken too much time to implement or I could have just give the DB info to the user but this is less practical
