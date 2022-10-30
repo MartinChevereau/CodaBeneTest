@@ -28,3 +28,10 @@ def addProductView(request):
         'valid' : valid
     }
     return render(request, "addProduct.html",context)
+
+def checkExpiriesView(request):
+    expiries = ExpiriesModel.objects.all().order_by('expiry_date')
+    context = {
+        "content" : expiries
+    }
+    return render(request, "checkExpiries.html", context)

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add product expiry</title>
+</head>
+
+<body>
+    <center>
+        <h1>Current products in store</h1>
+        {% for data in content%}
+        <li>
+            <p >{{data}}</p>
+            <img src="../media/{{data.GTIN.photo}}" height="100" width="100" >
+        </li>
+        {%endfor%}
+    </center>
+</body>
+
+</html>
